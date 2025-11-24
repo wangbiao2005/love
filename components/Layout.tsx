@@ -169,6 +169,15 @@ const Layout: React.FC<LayoutProps> = ({
         <NavContent />
       </aside>
 
+<<<<<<< HEAD
+      <div className="md:hidden fixed top-0 left-0 right-0 h-[calc(3.5rem+env(safe-area-inset-top))] glass-panel border-b-0 shadow-sm flex items-end justify-between px-4 pb-2 z-40 pt-safe">
+        <div className="flex items-center gap-2">
+          <div className="bg-teal-600 text-white p-1 rounded-lg"><Wind size={16} /></div>
+          <span className="font-bold text-slate-800 text-sm">LifeFlow</span>
+        </div>
+        <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 bg-white/80 rounded-lg text-slate-600 shadow-sm backdrop-blur-sm">
+          <Menu size={18} />
+=======
       <div className="md:hidden fixed top-0 left-0 right-0 h-[calc(4rem+env(safe-area-inset-top))] glass-panel border-b-0 shadow-sm flex items-end justify-between px-4 pb-3 z-40 pt-safe">
         <div className="flex items-center gap-2">
           <div className="bg-teal-600 text-white p-1.5 rounded-lg"><Wind size={18} /></div>
@@ -176,6 +185,7 @@ const Layout: React.FC<LayoutProps> = ({
         </div>
         <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 bg-white/80 rounded-lg text-slate-600 shadow-sm backdrop-blur-sm">
           <Menu size={20} />
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
         </button>
       </div>
 
@@ -196,8 +206,14 @@ const Layout: React.FC<LayoutProps> = ({
         </div>
       )}
 
+<<<<<<< HEAD
+      <main className="flex-1 h-full overflow-y-auto overflow-x-hidden relative z-10 pt-[calc(3.5rem+env(safe-area-inset-top))] md:pt-0">
+         {/* Reduced padding for mobile to prevent crowding */}
+         <div className="p-3 md:p-8 pb-24 md:pb-10 max-w-7xl mx-auto min-h-full">
+=======
       <main className="flex-1 h-full overflow-y-auto overflow-x-hidden relative z-10 pt-[calc(4rem+env(safe-area-inset-top))] md:pt-0">
          <div className="p-4 md:p-8 pb-32 md:pb-10 max-w-7xl mx-auto min-h-full">
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
             {children}
          </div>
       </main>

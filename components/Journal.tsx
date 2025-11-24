@@ -82,6 +82,18 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
   const getMoodConfig = (id: string) => MOODS.find(m => m.id === id) || MOODS[2];
 
   return (
+<<<<<<< HEAD
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8 h-[calc(100dvh-6rem)] md:h-[calc(100vh-140px)] animate-in fade-in slide-in-from-bottom-4 duration-500">
+      
+      {/* Editor Section - Takes full height on mobile */}
+      <div className="lg:col-span-2 flex flex-col glass-panel rounded-3xl border border-white/60 shadow-xl overflow-hidden relative z-10 h-full">
+        <div className="p-3 md:p-5 border-b border-slate-100/50 bg-white/40 backdrop-blur-sm flex justify-between items-center shrink-0">
+          <div className="flex items-center gap-2 md:gap-3 text-slate-700 font-bold">
+              <div className="p-1.5 md:p-2 bg-teal-100 text-teal-600 rounded-lg"><PenLine size={16} className="md:w-5 md:h-5" /></div>
+              <span className="text-sm md:text-base">思维日志</span>
+          </div>
+          <div className="flex gap-1 md:gap-2">
+=======
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-[calc(100vh-140px)] animate-in fade-in slide-in-from-bottom-4 duration-500">
       
       {/* Editor Section */}
@@ -92,19 +104,40 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
               <span>思维日志</span>
           </div>
           <div className="flex gap-2">
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
               {MOODS.map(m => (
                   <button 
                     key={m.id} 
                     onClick={() => setMood(m.id as any)} 
+<<<<<<< HEAD
+                    className={`p-1.5 md:p-2 rounded-xl border transition-all hover:scale-110 active:scale-95 ${mood === m.id ? 'shadow-md ring-1 ring-slate-200 scale-110 ' + m.color : 'border-transparent text-slate-300 grayscale hover:grayscale-0'}`}
+                    title={m.label}
+                  >
+                      <m.icon size={16} className="md:w-5 md:h-5" />
+=======
                     className={`p-2 rounded-xl border transition-all hover:scale-110 active:scale-95 ${mood === m.id ? 'shadow-md ring-1 ring-slate-200 scale-110 ' + m.color : 'border-transparent text-slate-300 grayscale hover:grayscale-0'}`}
                     title={m.label}
                   >
                       <m.icon size={20} />
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                   </button>
               ))}
           </div>
         </div>
         
+<<<<<<< HEAD
+        <div className="flex-1 relative group min-h-0">
+             <textarea 
+                value={content} 
+                onChange={(e) => setContent(e.target.value)} 
+                placeholder="记录今天的觉察..." 
+                className="w-full h-full p-4 md:p-8 resize-none focus:outline-none text-slate-700 text-base md:text-lg leading-relaxed bg-transparent placeholder:text-slate-300" 
+             />
+             {!content && (
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none opacity-40">
+                     <Sparkles size={32} className="mx-auto text-teal-300 mb-2 md:w-10 md:h-10"/>
+                     <p className="text-xs md:text-sm text-teal-600">写下此刻的想法</p>
+=======
         <div className="flex-1 relative group">
              <textarea 
                 value={content} 
@@ -116,17 +149,32 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none opacity-40">
                      <Sparkles size={40} className="mx-auto text-teal-300 mb-2"/>
                      <p className="text-sm text-teal-600">写下此刻的想法，或点击下方“灵感胶囊”</p>
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                  </div>
              )}
         </div>
 
         {/* Editor Toolbar */}
+<<<<<<< HEAD
+        <div className="px-3 py-2 md:px-5 md:py-3 bg-white/40 border-t border-slate-100/50 backdrop-blur-sm flex flex-col gap-2 shrink-0">
+=======
         <div className="px-5 py-3 bg-white/40 border-t border-slate-100/50 backdrop-blur-sm flex flex-col gap-3">
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
              {/* Inspiration & Emojis */}
              <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
                  <button 
                     onClick={getInspiration} 
                     disabled={isGeneratingPrompt}
+<<<<<<< HEAD
+                    className="flex items-center gap-1.5 px-2.5 py-1.5 bg-amber-50 text-amber-600 rounded-lg text-[10px] md:text-xs font-bold hover:bg-amber-100 transition-colors whitespace-nowrap shadow-sm disabled:opacity-50"
+                 >
+                    {isGeneratingPrompt ? <Loader2 size={12} className="animate-spin"/> : <Lightbulb size={12} />} 
+                    灵感
+                 </button>
+                 <div className="w-px h-5 bg-slate-200 mx-1 shrink-0"></div>
+                 {EMOJIS.map(e => (
+                     <button key={e} onClick={() => insertText(e)} className="text-base md:text-lg hover:scale-125 transition-transform px-1">{e}</button>
+=======
                     className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 text-amber-600 rounded-lg text-xs font-bold hover:bg-amber-100 transition-colors whitespace-nowrap shadow-sm disabled:opacity-50"
                  >
                     {isGeneratingPrompt ? <Loader2 size={14} className="animate-spin"/> : <Lightbulb size={14} />} 
@@ -135,17 +183,26 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
                  <div className="w-px h-6 bg-slate-200 mx-2 shrink-0"></div>
                  {EMOJIS.map(e => (
                      <button key={e} onClick={() => insertText(e)} className="text-lg hover:scale-125 transition-transform px-1">{e}</button>
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                  ))}
              </div>
              
              {/* Tags */}
              <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
+<<<<<<< HEAD
+                 <Hash size={12} className="text-slate-400 shrink-0 md:w-3.5 md:h-3.5" />
+=======
                  <Hash size={14} className="text-slate-400 shrink-0" />
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                  {PRESET_TAGS.map(tag => (
                      <button 
                         key={tag} 
                         onClick={() => toggleTag(tag)}
+<<<<<<< HEAD
+                        className={`text-[10px] md:text-xs px-2 py-1 rounded-full border transition-all whitespace-nowrap ${selectedTags.includes(tag) ? 'bg-teal-500 text-white border-teal-500 shadow-sm' : 'bg-white border-slate-200 text-slate-500 hover:border-teal-300 hover:text-teal-600'}`}
+=======
                         className={`text-xs px-2.5 py-1 rounded-full border transition-all whitespace-nowrap ${selectedTags.includes(tag) ? 'bg-teal-500 text-white border-teal-500 shadow-sm' : 'bg-white border-slate-200 text-slate-500 hover:border-teal-300 hover:text-teal-600'}`}
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                      >
                         {tag}
                      </button>
@@ -153,23 +210,44 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
              </div>
         </div>
 
+<<<<<<< HEAD
+        <div className="p-3 md:p-5 border-t border-slate-100/50 bg-white/60 flex justify-between items-center shrink-0">
+          <span className="text-[10px] md:text-xs text-slate-400 flex items-center gap-2">
+              {isAnalyzing ? <><Sparkles size={12} className="animate-pulse text-teal-500"/> 分析中...</> : <><Sparkles size={12}/> AI 就绪</>}
+          </span>
+          <button onClick={handleSave} disabled={!content.trim() || isAnalyzing} className="bg-slate-900 text-white px-4 py-2 md:px-6 md:py-3 rounded-xl flex items-center gap-2 hover:bg-slate-800 shadow-lg active:scale-95 transition-all font-bold disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-sm">
+              <Save size={16} /> 保存
+=======
         <div className="p-5 border-t border-slate-100/50 bg-white/60 flex justify-between items-center">
           <span className="text-xs text-slate-400 flex items-center gap-2">
               {isAnalyzing ? <><Sparkles size={14} className="animate-pulse text-teal-500"/> 正在分析...</> : <><Sparkles size={14}/> AI 反馈就绪</>}
           </span>
           <button onClick={handleSave} disabled={!content.trim() || isAnalyzing} className="bg-slate-900 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-slate-800 shadow-lg active:scale-95 transition-all font-bold disabled:opacity-50 disabled:cursor-not-allowed">
               <Save size={18} /> 保存日记
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
           </button>
         </div>
       </div>
 
+<<<<<<< HEAD
+      {/* History Sidebar - Hidden on small screens unless we add a toggle, but for now let's keep it as part of the grid, maybe stacked on mobile but the user complained about space. For mobile we might want to hide history or show it differently.
+          Given the request to fix crowding, on mobile let's make this section collapsible or just below. 
+          For simplicity in this fix, I'll keep the grid which stacks on mobile, but ensure it doesn't break the "dvh" layout of the editor.
+      */}
+      <div className="glass-panel rounded-3xl border border-white/60 p-4 md:p-6 overflow-y-auto space-y-4 shadow-xl relative z-10 hidden lg:block">
+=======
       {/* History Sidebar */}
       <div className="glass-panel rounded-3xl border border-white/60 p-6 overflow-y-auto space-y-4 shadow-xl relative z-10">
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
         <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2"><Calendar size={18} className="text-slate-400" /> 往期回顾</h3>
         {entries.length === 0 && <div className="text-center py-10 opacity-50"><p className="text-sm text-slate-500">暂无记录，写下第一篇吧</p></div>}
         {entries.map(entry => {
             const MoodIcon = getMoodConfig(entry.mood).icon;
+<<<<<<< HEAD
+            const moodColor = getMoodConfig(entry.mood).color.split(' ')[0];
+=======
             const moodColor = getMoodConfig(entry.mood).color.split(' ')[0]; // Extract text color
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
             return (
               <div 
                 key={entry.id} 
@@ -181,6 +259,8 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
                     <MoodIcon size={16} className={moodColor} />
                 </div>
                 <p className="text-slate-700 text-sm line-clamp-2 mb-2 font-medium">{entry.content}</p>
+<<<<<<< HEAD
+=======
                 {entry.tags && entry.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1 mb-2">
                         {entry.tags.map(t => <span key={t} className="text-[10px] text-teal-600 bg-teal-50 px-1.5 rounded">{t}</span>)}
@@ -192,6 +272,7 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
                         <span>AI 已回复</span>
                     </div>
                 )}
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
               </div>
             );
         })}
@@ -201,7 +282,11 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
       {selectedEntry && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in" onClick={() => setSelectedEntry(null)}>
             <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[85vh] animate-in zoom-in-95" onClick={e => e.stopPropagation()}>
+<<<<<<< HEAD
+                <div className="p-4 md:p-6 border-b flex justify-between items-start bg-slate-50">
+=======
                 <div className="p-6 border-b flex justify-between items-start bg-slate-50">
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                     <div>
                         <div className="flex items-center gap-3 mb-2">
                             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{new Date(selectedEntry.date).toLocaleDateString('zh-CN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -217,6 +302,15 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
                     <button onClick={() => setSelectedEntry(null)} className="p-2 bg-white rounded-full text-slate-400 hover:text-slate-600 shadow-sm transition-colors"><X size={18}/></button>
                 </div>
                 
+<<<<<<< HEAD
+                <div className="p-6 md:p-8 overflow-y-auto custom-scrollbar">
+                    <p className="text-slate-800 text-base md:text-lg leading-loose whitespace-pre-wrap font-serif">{selectedEntry.content}</p>
+                    
+                    {selectedEntry.aiFeedback && (
+                        <div className="mt-8 bg-teal-50/50 rounded-2xl p-4 md:p-6 border border-teal-100 relative">
+                            <Sparkles size={20} className="text-teal-500 absolute top-4 left-4" />
+                            <div className="pl-8 md:pl-10">
+=======
                 <div className="p-8 overflow-y-auto custom-scrollbar">
                     <p className="text-slate-800 text-lg leading-loose whitespace-pre-wrap font-serif">{selectedEntry.content}</p>
                     
@@ -224,16 +318,20 @@ const Journal: React.FC<JournalProps> = ({ entries, setEntries, onEntrySaved, go
                         <div className="mt-8 bg-teal-50/50 rounded-2xl p-6 border border-teal-100 relative">
                             <Sparkles size={20} className="text-teal-500 absolute top-6 left-6" />
                             <div className="pl-10">
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                                 <h4 className="text-xs font-bold text-teal-700 uppercase tracking-wider mb-2">AI 教练反馈</h4>
                                 <p className="text-sm text-teal-900 leading-relaxed italic">"{selectedEntry.aiFeedback}"</p>
                             </div>
                         </div>
                     )}
                 </div>
+<<<<<<< HEAD
+=======
                 
                 <div className="p-4 bg-slate-50 border-t text-center">
                     <button onClick={() => setSelectedEntry(null)} className="text-sm font-bold text-slate-500 hover:text-slate-800 transition-colors">关闭</button>
                 </div>
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
             </div>
         </div>
       )}

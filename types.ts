@@ -87,7 +87,11 @@ export interface UserStats {
   lifeVision?: string; // New field for user's dream/motto
 }
 
+<<<<<<< HEAD
+export type SoundMode = 'none' | 'rain' | 'forest' | 'cafe' | 'ocean' | 'fire' | 'night' | 'thunder' | 'river';
+=======
 export type SoundMode = 'none' | 'rain' | 'forest' | 'cafe';
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
 
 export interface DailyQuote {
   text: string;

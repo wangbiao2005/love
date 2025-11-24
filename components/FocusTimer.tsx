@@ -1,10 +1,72 @@
 
+<<<<<<< HEAD
+import React, { useState } from 'react';
+import { Play, Pause, RotateCcw, Coffee, Brain, Volume2, VolumeX, Maximize2, Minimize2, CheckCircle2, HelpCircle, X, Plus, Minus, ChevronDown, Music2 } from 'lucide-react';
+=======
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, RotateCcw, Coffee, Brain, Volume2, VolumeX, Maximize2, Minimize2, CheckCircle2, HelpCircle, X, Plus, Minus, ChevronDown } from 'lucide-react';
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
 import { Task, SoundMode } from '../types';
 
 interface FocusTimerProps {
   tasks: Task[];
+<<<<<<< HEAD
+  onToggleTask?: (taskId: string) => void;
+  triggerToast: (msg: string, type: 'success' | 'info' | 'encouragement') => void;
+  // New props for global control
+  timerControls: {
+    isActive: boolean;
+    toggle: () => void;
+    reset: () => void;
+    setMode: (mode: 'focus' | 'break') => void;
+    adjustTime: (amount: number) => void;
+    minutes: number;
+    seconds: number;
+    initialMinutes: number;
+    mode: 'focus' | 'break';
+    selectedTaskId: string;
+    setSelectedTaskId: (id: string) => void;
+    soundEnabled: boolean;
+    setSoundEnabled: (enabled: boolean) => void;
+    soundMode: SoundMode;
+    setSoundMode: (mode: SoundMode) => void;
+    volume: number;
+    setVolume: (v: number) => void;
+  };
+}
+
+const SOUND_OPTIONS: {id: SoundMode, label: string}[] = [
+    {id:'none',label:'无'},
+    {id:'rain',label:'🌧️ 雨声'},
+    {id:'forest',label:'🌲 森林 (鸟鸣)'},
+    {id:'ocean',label:'🌊 海浪'},
+    {id:'fire',label:'🔥 篝火'},
+    {id:'night',label:'🦗 夏夜'},
+    {id:'thunder',label:'⚡ 雷雨'},
+    {id:'cafe',label:'☕ 咖啡厅'},
+    {id:'river',label:'💧 溪流'}
+];
+
+const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onToggleTask, triggerToast, timerControls }) => {
+  const {
+      isActive, toggle, reset, setMode, adjustTime,
+      minutes, seconds, initialMinutes, mode,
+      selectedTaskId, setSelectedTaskId,
+      soundEnabled, setSoundEnabled, soundMode, setSoundMode,
+      volume, setVolume
+  } = timerControls;
+
+  const [isImmersive, setIsImmersive] = useState(false);
+  const [showNoiseInfo, setShowNoiseInfo] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [showSoundMenu, setShowSoundMenu] = useState(false);
+
+  React.useEffect(() => {
+      if (!isActive && minutes === 0 && seconds === 0 && mode === 'focus' && selectedTaskId) {
+          setShowCompletionModal(true);
+      }
+  }, [isActive, minutes, seconds, mode, selectedTaskId]);
+=======
   onComplete?: (minutes: number) => void;
   onToggleTask?: (taskId: string) => void;
   triggerToast: (msg: string, type: 'success' | 'info' | 'encouragement') => void;
@@ -84,6 +146,7 @@ const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onComplete, onToggleTask
           switchMode('focus');
       }
   };
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
 
   const handleTaskComplete = () => {
       if (selectedTaskId && onToggleTask) {
@@ -94,6 +157,8 @@ const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onComplete, onToggleTask
       setSelectedTaskId('');
   };
 
+<<<<<<< HEAD
+=======
   const toggleTimer = () => setIsActive(!isActive);
   
   const resetTimer = () => { 
@@ -121,6 +186,7 @@ const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onComplete, onToggleTask
       }
   };
 
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
   const totalSeconds = initialMinutes * 60;
   const currentTotalSeconds = minutes * 60 + seconds;
   const progress = totalSeconds > 0 ? ((totalSeconds - currentTotalSeconds) / totalSeconds) * 100 : 0;
@@ -156,8 +222,13 @@ const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onComplete, onToggleTask
                  {/* Mode Switcher */}
                  {!isActive && !isImmersive && (
                     <div className="bg-white/60 p-1 rounded-full backdrop-blur-sm border border-white/50 shadow-sm inline-flex">
+<<<<<<< HEAD
+                        <button onClick={() => setMode('focus')} className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'focus' ? 'bg-teal-500 text-white shadow-md' : 'text-slate-500 hover:bg-white/50'}`}>心流</button>
+                        <button onClick={() => setMode('break')} className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'break' ? 'bg-amber-500 text-white shadow-md' : 'text-slate-500 hover:bg-white/50'}`}>休息</button>
+=======
                         <button onClick={() => switchMode('focus')} className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'focus' ? 'bg-teal-500 text-white shadow-md' : 'text-slate-500 hover:bg-white/50'}`}>心流</button>
                         <button onClick={() => switchMode('break')} className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'break' ? 'bg-amber-500 text-white shadow-md' : 'text-slate-500 hover:bg-white/50'}`}>休息</button>
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                     </div>
                  )}
 
@@ -254,14 +325,22 @@ const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onComplete, onToggleTask
                  {/* Play/Reset Buttons */}
                  <div className="flex items-center gap-8">
                       <button 
+<<<<<<< HEAD
+                        onClick={toggle} 
+=======
                         onClick={toggleTimer} 
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                         className={`w-20 h-20 rounded-[2.5rem] flex items-center justify-center transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 ${isActive ? 'bg-white text-slate-800 ring-2 ring-slate-100' : 'bg-slate-900 text-white'}`}
                       >
                           {isActive ? <Pause size={32} strokeWidth={2.5} /> : <Play size={32} strokeWidth={2.5} className="ml-1" />}
                       </button>
                       
                       <button 
+<<<<<<< HEAD
+                        onClick={reset} 
+=======
                         onClick={resetTimer} 
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                         className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${isActive ? 'opacity-50 cursor-not-allowed bg-slate-100 text-slate-300' : 'bg-white border border-slate-200 text-slate-400 hover:bg-slate-50 hover:text-teal-600 hover:border-teal-200 hover:rotate-180 duration-500 shadow-sm'}`}
                         disabled={isActive}
                         title="重置"
@@ -272,11 +351,51 @@ const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onComplete, onToggleTask
 
                  {/* White Noise - Bottom Bar */}
                  {!isImmersive && (
+<<<<<<< HEAD
+                     <div className="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-2 flex items-center gap-2 shadow-sm relative">
+=======
                      <div className="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-2 flex items-center gap-1 shadow-sm">
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                          <button onClick={() => setSoundEnabled(!soundEnabled)} className={`p-3 rounded-xl transition-all ${soundEnabled ? 'text-teal-600 bg-teal-50' : 'text-slate-300 hover:text-slate-400'}`}>
                              {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
                          </button>
                          <div className="w-px h-6 bg-slate-200 mx-1"></div>
+<<<<<<< HEAD
+                         
+                         <button onClick={() => setShowSoundMenu(!showSoundMenu)} className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-slate-100 text-slate-600 text-xs font-bold hover:bg-slate-50 transition-all min-w-[120px] justify-between">
+                            <span className="truncate">{SOUND_OPTIONS.find(s => s.id === soundMode)?.label || '选择白噪音'}</span>
+                            <ChevronDown size={14} className={`transition-transform ${showSoundMenu ? 'rotate-180' : ''}`} />
+                         </button>
+
+                         {/* Sound Dropdown Menu */}
+                         {showSoundMenu && (
+                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/60 p-3 grid grid-cols-1 gap-2 animate-in slide-in-from-bottom-2 fade-in z-50">
+                                 <div className="px-2 pb-2 border-b border-slate-100">
+                                     <div className="flex justify-between text-[10px] text-slate-400 mb-1 font-bold uppercase"><span>Volume</span><span>{Math.round(volume * 100)}%</span></div>
+                                     <input 
+                                       type="range" 
+                                       min="0" max="1" step="0.05" 
+                                       value={volume} 
+                                       onChange={(e) => setVolume(parseFloat(e.target.value))}
+                                       className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-500"
+                                     />
+                                 </div>
+                                 <div className="max-h-[200px] overflow-y-auto space-y-1 custom-scrollbar">
+                                     {SOUND_OPTIONS.map(s => (
+                                         <button 
+                                            key={s.id}
+                                            onClick={() => { setSoundMode(s.id); if(s.id !== 'none') setSoundEnabled(true); }}
+                                            className={`w-full px-3 py-2.5 rounded-xl text-xs font-bold text-left flex items-center gap-2 transition-all ${soundMode === s.id ? 'bg-teal-50 text-teal-600' : 'text-slate-500 hover:bg-slate-50'}`}
+                                         >
+                                             <span className="flex-1">{s.label}</span>
+                                             {soundMode === s.id && <CheckCircle2 size={12} />}
+                                         </button>
+                                     ))}
+                                 </div>
+                             </div>
+                         )}
+
+=======
                          <div className="flex items-center gap-1">
                             {[
                                 {id:'none',label:'无'},
@@ -293,6 +412,7 @@ const FocusTimer: React.FC<FocusTimerProps> = ({ tasks, onComplete, onToggleTask
                                 </button>
                             ))}
                          </div>
+>>>>>>> 30a54e1a86f36ae55c759fe561dde835c23905be
                          <button onClick={() => setShowNoiseInfo(true)} className="ml-1 p-2 text-slate-300 hover:text-teal-500"><HelpCircle size={14}/></button>
                      </div>
                  )}
